@@ -1,4 +1,4 @@
-import "./style.scss";
+import style from "./style.module.scss";
 
 function List() {
     const book = [
@@ -16,7 +16,7 @@ function List() {
         }
     ];
     return(
-        <aside className="listaTarefas">
+        <aside className={style.listaTarefas}>
             <h2>Estudos do dia</h2>
             <ul>
                 {book.map((item, index) => (
