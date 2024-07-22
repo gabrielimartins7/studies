@@ -1,8 +1,9 @@
+import { useState } from "react";
 import Item from "./Item";
 import style from "./list.module.scss";
 
 function List() {
-    const book = [
+    const [book, setBook] = useState([
         { 
             materia: "React Js",
             tempo: "1:00:00"
@@ -15,10 +16,12 @@ function List() {
             materia: "Inglês",
             tempo: "0:50:00"
         }
-    ];
+    ]);
     return(
         <aside className={style.listaTarefas}>
-            <h2>Estudos do dia</h2>
+            <h2 onClick={() => {
+                setBook([...book, { materia: "Investimentos", tempo: "1:00:00"}])
+            }}>Estudos do dia</h2>
             <ul>
                 {book.map((item, index) => (
                     <Item
