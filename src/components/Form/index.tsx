@@ -1,8 +1,13 @@
 import React from "react";
-import Button from "../Button";
+
 import style from "./form.module.scss";
 
-class Form extends React.Component {
+import Button from "../Button";
+import { Book } from "../../types/book";
+
+class Form extends React.Component<{
+    setBook: React.Dispatch<React.SetStateAction<Book[]>>
+}> {
     state = {
         materia: "",
         tempo: "00:00"
@@ -10,6 +15,7 @@ class Form extends React.Component {
 
     addMatter(evento: React.FormEvent<HTMLFormElement>) {
         evento.preventDefault();
+        this.props.setBook(oldBook => [...oldBook, { ...this.state }]);
     }
 
     render() {
@@ -43,6 +49,7 @@ class Form extends React.Component {
                 </div>
                 <Button
                     text="Adicionar"
+                    type="submit"
                 />
             </form>
         )
