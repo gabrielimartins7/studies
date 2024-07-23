@@ -1,4 +1,5 @@
 import React from "react";
+import { v4 as uuidv4 } from "uuid";
 
 import style from "./form.module.scss";
 
@@ -15,7 +16,20 @@ class Form extends React.Component<{
 
     addMatter(evento: React.FormEvent<HTMLFormElement>) {
         evento.preventDefault();
-        this.props.setBook(oldBook => [...oldBook, { ...this.state }]);
+        this.props.setBook(oldBook => 
+            [
+                ...oldBook, 
+                { 
+                    ...this.state,
+                    selected: false,
+                    completed: false,
+                    id: uuidv4()
+                }
+            ]);
+        this.setState({
+            materia: "",
+            tempo: "00:00"
+        });
     }
 
     render() {
