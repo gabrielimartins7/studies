@@ -15,7 +15,9 @@ export default function Item(
         selectBook 
     }: Props) {
     return(
-        <li className={style.item} onClick={() => selectBook({
+        <li
+        className={`${style.item} ${selected ? style.itemSelecionado : ''}`}
+        onClick={() => selectBook({
             materia,
             tempo,
             selected,

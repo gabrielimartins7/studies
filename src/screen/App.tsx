@@ -13,6 +13,10 @@ function App() {
 
   function selectBook(selectedBook: Book) {
     setSelected(selectedBook);
+    setBook(previousBook => previousBook.map(book => ({
+      ...book,
+      selected: book.id === selectedBook.id ? true : false
+    })));
   }
 
   return (
