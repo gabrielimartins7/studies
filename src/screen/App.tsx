@@ -9,10 +9,19 @@ import style from './app.module.scss';
 
 function App() {
   const [book, setBook] = useState<Book[] | []>([]);
+  const [selected, setSelected] = useState<Book>();
+
+  function selectBook(selectedBook: Book) {
+    setSelected(selectedBook);
+  }
+
   return (
     <div className={style.AppStyle}>
       <Form setBook={setBook} />
-      <List book={book} />
+      <List
+        book={book}
+        selectBook={selectBook}
+      />
       <Timer />
     </div>
   );
