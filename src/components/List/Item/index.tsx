@@ -1,5 +1,5 @@
 import { Book } from "../../../types/book";
-import style from '../list.module.scss';
+import style from './item.module.scss';
 
 interface Props extends Book {
     selectBook: (selectedBook: Book) => void;
@@ -14,6 +14,7 @@ export default function Item(
         id, 
         selectBook 
     }: Props) {
+
     return(
         <li
         className={`${style.item} ${selected ? style.itemSelecionado : ''}`}
