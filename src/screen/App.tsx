@@ -26,7 +26,7 @@ function App() {
         book={book}
         selectBook={selectBook}
       />
-      <Timer />
+      <Timer selected={selected} />
     </div>
   );
 }
