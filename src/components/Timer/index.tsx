@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { timeForSeconds } from "../../common/utils/time";
 import { Book } from "../../types/book";
 
@@ -14,16 +14,17 @@ interface Props {
 export function Timer({ selected }: Props) {
     const [time, setTime] = useState<number>();
 
-    if(selected?.tempo) {
-        setTime(timeForSeconds(selected.tempo));
-    }
+    useEffect(() => {
+        if(selected?.tempo) {
+            setTime(timeForSeconds(selected.tempo));
+        }
+    }, [selected]);
 
     return(
         <div className={style.cronometro}>
             <p className={style.titulo}>Escolha um card e inicie o timer</p>
-            Timer: {time}
             <div className={style.relogioWrapper}>
-                <Clock />
+                <Clock time={time} />
             </div>
             <Button text="Iniciar" />
         </div>
