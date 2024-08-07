@@ -21,7 +21,7 @@ export default function Item(
             ${selected ? style.itemSelecionado : ''}
             ${completed ? style.itemCompletado : ''}
         `}
-        onClick={() => selectBook({
+        onClick={() => !completed && selectBook({
             materia,
             tempo,
             selected,
@@ -30,6 +30,7 @@ export default function Item(
         })}>
             <h3>{materia}</h3>
             <span>{tempo}</span>
+            {completed && <span className={style.concluido} aria-label="Estudo conluido"></span>}
         </li>
     )
 }
