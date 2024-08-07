@@ -19,6 +19,23 @@ function App() {
     })));
   }
 
+  function finishTask() {
+    if(selected) {
+      setSelected(undefined);
+      setBook(previousBooks => previousBooks.map(book => {
+        if(book.id === selected.id) {
+          return {
+            ...book,
+            selected: false,
+            completed: true
+          }
+        }
+
+        return book;
+      }))
+    }
+  }
+
   return (
     <div className={style.AppStyle}>
       <Form setBook={setBook} />
@@ -26,7 +43,10 @@ function App() {
         book={book}
         selectBook={selectBook}
       />
-      <Timer selected={selected} />
+      <Timer
+        selected={selected}
+        finishTask={finishTask}
+      />
     </div>
   );
 }

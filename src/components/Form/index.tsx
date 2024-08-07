@@ -62,9 +62,10 @@ class Form extends React.Component<{
                     />
                 </div>
                 <Button
-                    text="Adicionar"
                     type="submit"
-                />
+                >
+                    Adicionar
+                </Button>
             </form>
         )
     }

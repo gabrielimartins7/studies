@@ -17,7 +17,10 @@ export default function Item(
 
     return(
         <li
-        className={`${style.item} ${selected ? style.itemSelecionado : ''}`}
+        className={`${style.item} 
+            ${selected ? style.itemSelecionado : ''}
+            ${completed ? style.itemCompletado : ''}
+        `}
         onClick={() => selectBook({
             materia,
             tempo,

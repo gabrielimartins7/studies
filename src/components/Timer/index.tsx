@@ -9,9 +9,10 @@ import style from "./timer.module.scss";
 
 interface Props {
     selected: Book | undefined;
+    finishTask: () => void;
 }
 
-export function Timer({ selected }: Props) {
+export function Timer({ selected, finishTask }: Props) {
     const [time, setTime] = useState<number>();
 
     useEffect(() => {
@@ -26,6 +27,7 @@ export function Timer({ selected }: Props) {
                 setTime(counter - 1);
                 return regressive(counter - 1);
             }
+            finishTask();
         }, 1000);
     }
 
